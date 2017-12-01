@@ -16,7 +16,8 @@ urlpatterns = [
     url(r'^increment/(?P<winner_id>[0-9]+)/(?P<losser_id>[0-9]+)/$', 'peepcompare.views.increment', name='increment'),
     url(r'^api/auth/token/', obtain_jwt_token),
     url(r'^api/facemash/',include("peepcompare.face_mash_api.urls", namespace="facemash_api")),
-    url(r'^api/users/', include("peepcompare.users_api.urls", namespace="users_api"))
+    url(r'^api/users/', include("peepcompare.users_api.urls", namespace="users_api")),
+    url(r'^language/(?P<language>[a-z\-]+)/$', 'peepcompare.views.language', name='language'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

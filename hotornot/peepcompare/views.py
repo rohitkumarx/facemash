@@ -1,17 +1,21 @@
 import random
 import math
 from django.shortcuts import render
-from django.http import HttpResponseRedirect, Http404
+from django.http import HttpResponseRedirect, Http404, HttpResponse
 from .models import *
 
 def play(request):
+    language = 'en'
+    session_language = 'en'
+    if 'lang' in request.COOKIES:
+        language = request.COOKIES['lang']
     try:
         contestants = FaceMash.objects.all()
         contestant_1 = random.choice(contestants)
         contestant_2 = random.choice(contestants)
         while contestant_1 == contestant_2:
             contestant_2 = random.choice(contestants)
-        args = {'contestant_1': contestant_1, 'contestant_2' :  contestant_2}
+        args = {'contestant_1': contestant_1, 'contestant_2' :  contestant_2, 'language':language}
     except IndexError:
         error = True
         args = {'error': error}
@@ -45,3 +49,12 @@ def increment(request, winner_id, losser_id):
     losse.save()
 
     return HttpResponseRedirect('/')
+
+def language(request, language='en'):
+
+    response = HttpResponse("Setting language to {}".format(language))
+
+    response.set_cookie('lang', language)
+
+    return response
+
