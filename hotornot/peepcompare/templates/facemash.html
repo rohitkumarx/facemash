@@ -1,0 +1,73 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+
+<div class="container">
+    <div class="brown">
+        <h1 style="text-align: center;color: white;"> FaceMash </h1>
+        <a class="button" href="/api/facemash/">FaceMash API</a>
+        <a class="button" href="/api/users/register/">Users API</a>    
+        <h3 style="color:white;">Were we let in for our looks? No. Will we be judged on them? Yes.</h3>
+        <h2 style="color:white;">Who's Hotter? Click to Choose.</h2>
+        <h5 style="color:white;">Based on Ello's rating algorithm</h5>
+    </div>
+
+<div class="photocontainer">
+
+<div class="left">
+{{contestant_1.name}}
+<div id="firstphoto">
+<img src="{{contestant_1.photo.url}}"/>
+</div>
+{{contestant_1.ratings}}
+</div>
+<div class="right">
+{{contestant_2.name}}
+<div id="secondphoto">
+<img src="{{contestant_2.photo.url}}"/>
+</div>
+{{contestant_2.ratings}}
+</div>
+</div>
+
+</div>
+
+<style type="text/css">
+    div.brown{
+        background-color: #b6966c;
+    }
+    div.container {
+        margin: 15px;
+        height: 100%;
+        width: 100%;   
+    }
+    div.left, div.right{
+        float: left;
+        padding: 10px;    
+    }
+    div.photocontainer{
+        width: 50%;
+        margin: 35px auto; 
+    }
+    .button {
+    display: block;
+    width: 115px;
+    height: 71px;
+    background: #4E9CAF;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
+</style>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#firstphoto").click(function(){
+        window.location.href='/increment/{{contestant_1.id}}/{{contestant_2.id}}';
+    });
+    $("#secondphoto").click(function(){
+        window.location.href='/increment/{{contestant_2.id}}/{{contestant_1.id}}';
+    });
+});
+</script>
