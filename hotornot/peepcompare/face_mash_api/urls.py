@@ -11,7 +11,7 @@ from .views import (
 	FaceMashCreateApiView
 )
 
-
+#Create, read, update and delete
 urlpatterns = [
     
     url(r'^$',FaceMashListApiView.as_view(), name='list'),
