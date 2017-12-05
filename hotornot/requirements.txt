@@ -13,6 +13,7 @@ cryptography==1.4
 cssmin==0.2.0
 curtsies==0.2.11
 decorator==4.0.9
+dj-database-url==0.4.2
 Django==1.8
 django-admin-bootstrapped==2.5.7
 django-angular==0.8.4
@@ -129,6 +130,7 @@ urllib3==1.21.1
 uWSGI==2.0.15
 wcwidth==0.1.7
 webencodings==0.5
+whitenoise==3.3.1
 widgetsnbextension==2.0.0
 xlrd==0.9.4
 XlsxWriter==0.9.2
